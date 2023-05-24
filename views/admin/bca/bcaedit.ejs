@@ -1,0 +1,94 @@
+<%- include('../../header.ejs')%>
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row">
+
+                <h1 class="text-center">Registration Form</h1>
+                <h3 class="text-center"><%=n%></h3>
+                <p class="text-center bg-info">In Case Any Query, Kindly Contact: 9399892162</p>
+
+
+                <div class="col-md-5">
+                    <img src="/image/form.jpeg"width="100%"height="700px">
+                </div>
+                    <div class="col-md-7">
+                        <p class="h2 text-center">Form</p>
+                        <form action="/bcaupdate/<%=f._id%>" method="post" enctype="multipart/form-data">
+
+                            <div class="form-group mb-3">
+                                <label>Full Name:</label>
+                                <input class="form-control" type="text"name="name"value="<%=n%>" required
+                                    placeholder="Enter Your Full Name" />
+                                <span class="Error"></span>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label>Email:</label>
+                                <input class="form-control" type="email"name="email"value="<%=f.email%>" required
+                                    placeholder="Enter Your Email" />
+                                <span class="Error"></span>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label>Enter Mobile Number:</label>
+                                <input class="form-control" type="number" name="phone" value="<%=f.phone%>"required
+                                    placeholder="Enter Mobile Number" />
+                                <span class="Error"></span>
+                            </div>
+                            <div class="form-group mb-3">
+                            <label>Gender:</label><br />
+                            <label><input type="radio" name="gender" required value="Male" <%=f.gender=='Male'
+                                ? 'checked' : '' %> /> Male</label>
+                            <label><input type="radio" name="gender" required value="Female" <%=f.gender=='Female'
+                                ? 'checked' : '' %>/> Female</label>
+                            <label><input type="radio" name="gender" required value="Other"<%=f.gender=='Other'
+                                ? 'checked' : '' %> /> Other</label>
+                            <span class="Error"></span>
+                        </div>
+                            <div class="form-group mb-3">
+                                <label>D.O.B:</label>
+                                <input class="form-control" type="date"name="date" value="<%=f.date%>"required
+                                    placeholder="Enter Birth Date" />
+                                <span class="Error"></span>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label>Address:</label>
+                                <textarea class="form-control" name="address"><%=f.address%></textarea>
+                                <span class="Error"></span>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label>Select College:</label>
+                                <select class="form-control" name="college" value="<%=f.college%>">
+                                    <option > Select College</option>
+                                    <option <%=f.college=='ITM' ? 'selected' : '' %>>ITM</option>
+                                    <option <%=f.college=='MITS' ? 'selected' : '' %>>MITS</option>
+                                    <option <%=f.college=='RJIT' ? 'selected' : '' %>>RJIT</option>
+                                    <option <%=f.college=='IPS' ? 'selected' : '' %>>IPS</option>
+                                </select>
+                            </div> 
+                            <div class="form-group mb-3">
+                                <label>Select Course:</label>
+                                <select class="form-control" name="course" value="<%=f.course%>">
+                                    <option > Select Course</option>
+                                    <option <%=f.course=='BCA' ? 'selected' : '' %>>BCA</option>
+                                </select>
+                            </div>
+                             <div class="form-group mb-3">
+                                <label>Select Branch:</label>
+                                <select class="form-control" name="branch"value="<%=f.branch%>">
+                                    <option> Select Branch</option>
+                                    <option <%=f.branch=='CSE' ? 'selected' : '' %>>CSE</option>
+                                    <option <%=f.branch=='IT' ? 'selected' : '' %>>IT</option>
+                                    <option <%=f.branch=='EC' ? 'selected' : '' %>>EC</option>
+                                    <option <%=f.branch=='ME' ? 'selected' : '' %>>ME</option>
+                                    <option <%=f.branch=='CE' ? 'selected' : '' %>>CE</option>
+                                </select>
+                            </div>
+                            <div class="form-group mb-3">
+                                <input class="btn btn-primary btn-block" type="submit" value="Submit" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+<%- include('../../footer.ejs')%>

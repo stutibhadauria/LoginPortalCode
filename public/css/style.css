@@ -1,0 +1,137 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+body{
+    background-color: #9DC08B;
+}
+.navbar{
+ background:#EDF1D6;
+ position: fixed;
+ top: 0;
+ width: 100%;
+}
+.navbar-nav li
+{
+    padding: 0 10px;
+ }
+.navbar-nav li a
+   {
+     color:black !important;
+     font-weight: 600;
+     font-size: 25px;
+     font-family: monotype cursiva;
+}
+.navbar-nav li button
+   {
+     background-color:#609966;
+     color:black !important;
+     font-weight: 600;
+     font-size: 20px;
+     font-family: monotype cursiva;
+}
+.navbar-nav li a:hover{
+    background-color: #609966;
+}
+.navbar-brand img{
+    max-width: 40px;
+    height:auto;  
+    color: black;
+    margin-left: 50px;
+}
+.footer{
+    background-color: #EDF1D6;
+    color:black !important;
+    font-family: monotype cursiva;
+    font-size: 20px;
+    font-weight: 600;
+    /* margin-top: 20px; */
+}
+.footer h5{
+    font-size: 20px;
+    font-weight: 600;
+}
+.carousel-inner img{
+    height: 600px;
+}
+@media(max-width: 414px)
+{
+    .carousel-inner img{
+    height: auto;
+}
+}
+.carousel-indicators [data-bs-target]{
+    width:12px;
+    height:12px;
+    border-radius: 50%;
+    background-color:#609966;
+}
+.title::before, .title::after{
+	content: "";
+	height: 2px;
+	background-color: #000;
+	display: block;
+}
+.title{
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	align-items: center;
+	column-gap: 1.6 rem;
+	font-family:fantasy;
+}
+
+.why{
+    text-align: center;
+    /* background-color: #9DC08B; */
+    /* border: 2px solid black ; */
+}
+.why img{
+    width:100%;
+    height: 200px;
+    float: left;
+    /* margin-right: 6px;   */
+}
+.why h1{
+    font-family: monotype cursiva;
+    margin-top: 30px;
+}
+.why h4{
+    font-family:monotype cursiva;
+    margin-top: 10px;
+}
+.card{
+    box-shadow:5px 5px 19px black;
+}
+.card-body:hover{
+    background-color: #9DC08B;
+}
+.card-body{
+    background-color: #EDF1D6;
+}
+.card-body a{
+    background-color: #609966;
+    color: black;
+    font-weight: bold;
+}
+.card-body h4{
+    font-family: monotype cursiva;
+}
+.card-body p{
+    font-family: monotype cursiva;
+}
+.view {
+    background-color:#9DC08B;
+    width:100%;
+    height: 500px;
+}
+.view h1{
+    text-align: center;
+    color: black;
+    font-family: monotype cursiva;
+}
+.dash-left ul {padding:0;margin:0;list-style:none;}
+.dash-left ul li { background-color:#EDF1D6; margin-bottom:5px;}
+.dash-left ul li a {color:black; padding:5px 15px; display: block;}
+.dash-left ul li:hover a {background-color: #9DC08B;text-decoration: none; color:black;}
+.dash-left ul li a.active {background-color:#EDF1D6; color:black;}
+.dash-header {display:flex; justify-content: space-between;}

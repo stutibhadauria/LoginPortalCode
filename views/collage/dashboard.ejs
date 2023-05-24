@@ -1,0 +1,27 @@
+<%- include('../header.ejs')%><br><br>
+<section class="dashboard-wrap mtb-40">
+    <div class="container">
+        <div class="body-content">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="dash-left">
+                        <ul>
+                            <li class="active"><a href="/collage/dashboard" class="active"style="font-weight:bold;">Dashboard</a></li>
+                            <li><a href="/collage/display"style="font-weight:bold;">Display</a></li>
+                            <li><a href="/collage/contact"style="font-weight:bold;">Contact</a></li>          
+                            <li><a href="/logout"style="font-weight:bold;">Logout</a></li>
+                        </ul>
+                    </div>   
+                </div>
+                <div class="col-md-9">
+                    <div class="dash-right">
+                        <h1 style="font-size: 50px;color: black;">Welcome <b class="text-danger"><%=n %></b>
+                        <br>At This Admission Portal</h1>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+</section><br><br>
+<%- include('../footer.ejs')%>
+

@@ -1,0 +1,103 @@
+<%- include('../header.ejs')%>
+
+<!-- slider start -->
+<div class="carousel slide" data-bs-ride="carousel" id="a">
+ 
+    <div class="carousel-indicators">
+     <button type="button" data-bs-target="#a" data-bs-slide-to="0" class="active"></button>
+     <button type="button" data-bs-target="#a" data-bs-slide-to="1" ></button>
+     <button type="button" data-bs-target="#a" data-bs-slide-to="2" ></button>
+     <button type="button" data-bs-target="#a" data-bs-slide-to="3" ></button>
+    </div>
+
+
+    <div class="carousel-inner">
+    <div class="carousel-item active" data-bs-interval="4000">
+
+      <img src="/image/p1.jpg" class="w-100" alt="...">
+      <div class="col-md-6 text-start carousel-caption pt-4">
+      </div>
+      <div class="carousel-caption">
+      </div>
+    </div>
+
+    <div class="carousel-item" data-bs-interval="4000">
+
+      <img src="/image/p2.jpeg" class="w-100" alt="...">
+    </div>
+
+    <div class="carousel-item" data-bs-interval="4000">
+
+      <img src="/image/p3.jpeg" class="w-100" alt="...">
+    </div>
+    <div class="carousel-item" data-bs-interval="4000">
+
+      <img src="/image/p4.jpeg" class="w-100" alt="...">
+    </div>
+    </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#a" data-bs-slide="prev">
+  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+   
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#a" data-bs-slide="next">
+  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    
+  </button>
+</div>
+<!-- slider end -->
+
+<div class="container-fluid why">
+    <div class="container">
+      <h1>Welcome <%=n%></h1>
+      <h1 class="title">REGISTER YOUR COURSE</h1>
+      <h4>Course Registration means the official recording of a student's name to study a course or courses.</h4>
+      <br><br><br>
+      <div class="row">
+        <div class="col-md-4 mb-5">
+           <div class="card">
+              <img class="card-img-top" src="/image/p5.jpeg">
+              <div class="card-body">
+                <h4>B.tech</h4>
+                <p class="text-center">B.Tech is a professional undergraduate<br> engineering degree</p>
+                <% if(bt){%>
+                  <a href="/admin/btechview" class="btn btn-outline-success">Display</a>
+                <% } else { %>
+                  <a href="/admin/btechdisplay" class="btn btn-outline-success">Register</a>
+                <% } %>
+              </div>
+           </div>
+        </div>
+        <div class="col-md-4 mb-5">
+            <div class="card">
+               <img class="card-img-top" src="/image/p6.jpeg">
+               <div class="card-body">
+                <h4>BBA</h4>
+            <p class="text-center">BCA is a three-year Bachelor of <br>Business Administration</p>
+            <% if(bb){%>
+              <a href="/admin/formview" class="btn btn-outline-success">Display</a>
+            <% } else { %>
+              <a href="/admin/formdisplay" class="btn btn-outline-success">Register</a>
+            <% } %>
+               </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-5">
+            <div class="card">
+            <img class="card-img-top" src="/image/BCA.jpg">
+            <div class="card-body">
+              <h4>BCA</h4>
+            <p class="text-center">BCA is one of the most popular graduate <br>courses in India and abroad.</p>
+            <% if(bc){%>
+              <a href="/admin/bcaview" class="btn btn-outline-success">Display</a>
+            <% } else { %>
+              <a href="/admin/bcadisplay" class="btn btn-outline-success">Register</a>
+            <% } %>
+            </div>
+            </div>
+            <br><br>
+        </div>
+      </div>
+</div>
+</div>
+
+<%-include('../footer.ejs')%>

@@ -1,0 +1,67 @@
+<%- include('../../header.ejs') %>
+<div class="container-fluid view">
+    <div class="container">
+        <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+    <table class="table table-bordered table-striped "style="margin-top:20px">
+        <tr class="bg-secondary">
+            <th>Serial.no</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>gender</th>
+            <th>DOB</th>
+            <th>Address</th>
+            <th>College</th>
+            <th>Course</th>
+            <th>Branch</th> 
+            <th>Edit</th>
+        </tr>
+        <% i=1 %>
+
+            <% f.forEach((b)=>{ %>
+                <tr class="bg-warning">
+                    <td>
+                        <%= i++ %>
+                    </td>
+                    <td>
+                        <%= b.name %>
+                    </td>
+                    <td>
+                        <%= b.email %>
+                    </td>
+                    <td>
+                        <%= b.phone %>
+                    </td>
+                    <td>
+                        <%= b.gender %>
+                    </td>
+                    <td>
+                        <%= b.date%>
+                    </td>
+                    <td>
+                        <%= b.address%>
+                    </td>
+                    <td>
+                        <%= b.college%>
+                    </td>
+                    <td>
+                        <%= b.course%>
+                    </td>
+                    <td>
+                        <%= b.branch%>
+                    </td>
+                    <td>
+                        <a href="/admin/btechedit/<%=b._id%>" class="btn btn-danger"><i class="fa-regular fa-pen-to-square"></i></a>
+                    </td>
+
+                    <% }) %>
+    </table>
+    <a href="/admin/dashboard" class="btn btn-danger">Submit</a>
+    </div>
+    </div>
+    </div>
+</div>
+
+    <%- include('../../footer.ejs') %>
