@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 </head>
 
-<body style="background-color: #9DC08B;">
+<body style="background-color: #9DC08B;"onload="myfunction()">
     <!-- navbar start -->
 <nav class="navbar navbar-expand-md navbar-dark bg-blue sticky-top">
     <div class="container">
@@ -26,7 +26,7 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="/">Home</a>
+            <a class="nav-link" href="/admin/dashboard">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/admin/about">About</a>
@@ -37,16 +37,50 @@
         </ul>
         <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a href="/" class="nav-link">logout</a>
+              <a href="/login" class="nav-link">logout</a>
             </li>
+            <!-- <li class="nav-item">
+              <a href="/profile" class="nav-link">profile</a>
+            </li> -->
             <li class="nav-item">
-           <button class="btn btn-outline-success"><%=n%></button>
-             <img src="<%=i.url%>"width="100px"height="80px">
+           <a href="" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#passprof"><%=n%></a>
             </li>
+            <img src="<%=i.url%>" width="60px"height="60px" class="pimg">
         </ul>
       </div>
       </div>
 </nav>
+<div class="modal fade" id="passprof" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Change password and profile update</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+
+            <form method="post" action="/changepassword"enctype="multipart/form-data">
+                <div class="form-group form-row">
+                    <label class="col-md-3 required">Change password</label>
+                    <div class="col-md-9">
+                        <a href="/profile"class="btn btn-primary" > change password</a>
+                    </div>
+                </div>
+                <div class="form-group form-row">
+                    <label class="col-md-3 required">update profile</label>
+                    <div class="col-md-9">
+                      <a href="/profile" class="btn btn-primary" > update profile</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>           
+</div>
 
 <!-- navbar end -->
 </body>

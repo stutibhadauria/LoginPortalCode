@@ -1,13 +1,14 @@
-// const adminModel=require('../../models/admin')
-// const cloudinary=require('cloudinary').v2
-// cloudinary.config({ 
-//     cloud_name: 'dnroacutk', 
-//     api_key: '956193383899983', 
-//     api_secret: 'fiAOrevYJW_D-HW7sWgAcNIwMNs',
-//     // secure: true
-
 const CourseModel = require("../../models/course")
-
+const adminModel = require("../../models/admin")
+const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
+const cloudinary = require('cloudinary').v2
+cloudinary.config({
+    cloud_name: 'dnroacutk',
+    api_key: '956193383899983',
+    api_secret: 'fiAOrevYJW_D-HW7sWgAcNIwMNs',
+    // secure: true
+});
 
 //   });
 class AdminController {
@@ -41,7 +42,7 @@ class AdminController {
     }
     static btech = async (req, res) => {
         try {
-            const { name } = req.admin
+            const { name, email } = req.admin
             res.render('admin/btech/btechdisplay', { n: name })
         } catch (err) {
             console.log(err)
@@ -49,65 +50,98 @@ class AdminController {
     }
     static contact = async (req, res) => {
         try {
-            const { name, image } = req.admin
-            res.render('admin/contact', { n: name, i: image })
+            const { name, image, email } = req.admin
+            res.render('admin/contact', { n: name, i: image, e: email })
         } catch (err) {
             console.log(err)
         }
     }
-    static cpassword = async (req, res) => {
+    static about = async (req, res) => {
         try {
-            const { name, image } = req.admin;
-            res.render("admin/cpassword", {
-                message: req.flash("success"),
-                message1: req.flash("error"),
-                n: name,
-                i: image,
-            });
+            const { name, image, email } = req.admin
+            res.render('admin/about', { n: name, i: image, e: email })
         } catch (err) {
-            console.log(err);
+            console.log(err)
         }
-    };
-
-    static updatepassword = async (req, res) => {
+    }
+    static profile = async (req, res) => {
         try {
-            console.log(req.body)
-            const { oldPassword, newPassword, confirmPassword } = req.body;
-
-            if (oldPassword && newPassword && confirmPassword) {
-                const admin = await LoginModel.findById(req.admin.id).select(
-                    "+password"
-                );
-                const isMatch = await bcrypt.compare(oldPassword, admin.password);
-                //const isPasswordMatched = await userModel.comparePassword(req.body.oldPassword);
-                if (!isMatch) {
-                    req.flash("error", "old password is incorecct");
-                    res.redirect("/admin/cpassword");
-                } else {
-                    if (newPassword !== confirmPassword) {
-                        req.flash(
-                            "error",
-                            "password and confirm password doesnt match!"
-                        );
-                        res.redirect("/admin/cpassword");
-                    } else {
-                        const salt = await bcrypt.genSalt(10);
-                        const newhashPassword = await bcrypt.hash(newPassword, salt);
-                        //console.log(req.user)
-                        await LoginModel.findByIdAndUpdate(req.admin.id, {
-                            $set: { password: newhashPassword },
+            const { name, image, email ,_id} = req.admin
+            res.render('admin/profile', { n: name, i: image, e: email, message: req.flash("success"), message1: req.flash("error") })
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    static changepassword = async (req, res) => {
+        try {
+            const { name, image, _id } = req.admin
+            const { oldpassword, newpassword, cpassword } = req.body
+            if (oldpassword && newpassword && cpassword) {
+                const user = await adminModel.findById(_id)
+                const ismatch = await bcrypt.compare(oldpassword, user.password)
+                if (!ismatch) {
+                    req.flash("error", "old password is not match!!")
+                    res.redirect('/profile')
+                }
+                else {
+                    if (newpassword != cpassword) {
+                        req.flash('error', "password and confirm password does not match")
+                        res.redirect('/profile')
+                    }
+                    else {
+                        const newHashpassword = await bcrypt.hash(newpassword, 10)
+                        await adminModel.findByIdAndUpdate(_id, {
+                            $set: { password: newHashpassword },
                         });
-                        req.flash("success", "password change successfully");
-                        res.redirect("/admin/cpassword");
+                        // alert("successfully change password!!")
+                        req.flash("success", "password changes successfully!!")
+                        res.redirect('/admin/dashboard')
                     }
                 }
             } else {
-                req.flash("error", "All field are required");
-                res.redirect("/admin/cpassword");
+                req.flash('error', "all fields are required")
+                res.redirect('/')
             }
+            // console.log(req.body)
         } catch (err) {
-            console.log(err);
+            console.log(err)
         }
-    };
+    }
+    static updateprofile = async (req, res) => {
+        try {
+            // console.log(req.files.image)
+            // console.log(admin.id);
+            if (req.files) {
+                const user = await adminModel.findById(req.admin.id);
+                const image_id = user.image.public_id;
+            //  console.log(req.admin.id);
+            // console.log(req.admin.image_id);
+                await cloudinary.uploader.destroy(image_id);
+                const file = req.files.image;
+                const myimage = await cloudinary.uploader.upload(file.tempFilePath, {
+                    folder: "logo_image",
+                });
+                var data = {
+                    name: req.body.name,
+                    email: req.body.email,
+                    image: {
+                        public_id: myimage.public_id,
+                        url: myimage.secure_url,
+                    },
+                };
+            } else {
+                var data = {
+                    name: req.body.name,
+                    email: req.body.email,
+
+                }
+            }
+            const updateprofile = await adminModel.findByIdAndUpdate(req.admin.id, data)
+            res.redirect('/profile')
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
 }
 module.exports = AdminController

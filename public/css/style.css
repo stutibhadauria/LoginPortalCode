@@ -33,11 +33,14 @@ body{
 .navbar-nav li a:hover{
     background-color: #609966;
 }
+.pimg{
+    border-radius: 50%;
+}
 .navbar-brand img{
-    max-width: 40px;
+    max-width: 60px;
     height:auto;  
     color: black;
-    margin-left: 50px;
+    margin-left: 50px ;  
 }
 .footer{
     background-color: #EDF1D6;
@@ -102,6 +105,9 @@ body{
 .card{
     box-shadow:5px 5px 19px black;
 }
+.card:hover{
+    transform: scale(1.02);
+}
 .card-body:hover{
     background-color: #9DC08B;
 }
@@ -135,3 +141,37 @@ body{
 .dash-left ul li:hover a {background-color: #9DC08B;text-decoration: none; color:black;}
 .dash-left ul li a.active {background-color:#EDF1D6; color:black;}
 .dash-header {display:flex; justify-content: space-between;}
+
+.about{
+    text-align: center;
+    
+}
+.about h1{
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family:monotype cursiva ;
+}
+.about p{
+    margin-top: 30px;
+    font-family: monotype cursiva;
+}
+.p{
+    border:2px solid black;
+    text-align: center;
+    height: 400px;
+    box-shadow: 2px 2px 19px;
+
+}
+.p button{
+    margin-top: 50px;
+}
+.p img{
+    width: 200px;
+    height: 150px;
+    border-radius: 50%;
+    text-align: center;
+    margin-top: 50px;
+}
+.p:hover{
+    transform: scale(1.02);
+}

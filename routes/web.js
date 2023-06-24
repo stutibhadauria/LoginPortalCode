@@ -8,13 +8,15 @@ const admin_auth=require('../middleware/auth');
 const BtechController = require('../controllers/admin/BtechController');
 const CollageController = require('../controllers/CollageController');
 const ContactController = require('../controllers/Contactcontroller');
+const PasswordController = require('../controllers/PasswordController');
 
 
 
 
 
 //================frontend controller==========
-router.get('/',FrontendController.login)
+router.get('/',FrontendController.welcome)
+router.get('/login',FrontendController.login)
 router.get('/register',FrontendController.adminregister)
 router.post('/adminregister',FrontendController.admininsert)
 router.post('/verifylogin',FrontendController.verifylogin)
@@ -25,8 +27,10 @@ router.get('/logout',FrontendController.logout)
 //==============admin controller=============
 router.get('/admin/dashboard',admin_auth,AdminController.dashboard)
 router.get('/admin/contact',admin_auth,AdminController.contact)
-router.get('/admin/cpassword',admin_auth,AdminController.cpassword)
-router.post('/updatepassword',admin_auth,AdminController.updatepassword)
+router.get('/profile',admin_auth,AdminController.profile)
+router.post('/changepassword',admin_auth,AdminController.changepassword)
+router.post('/updateprofile',admin_auth,AdminController.updateprofile)
+router.get('/admin/about',admin_auth,AdminController.about)
 
 // formController
 router.get('/admin/formdisplay',admin_auth,FormController.formdisplay)
@@ -57,5 +61,9 @@ router.get('/collage/contact',admin_auth,CollageController.contact)
 //contactcontroller
 router.get('/collage/contact',admin_auth,ContactController.contactview)
 router.post('/contactinsert',admin_auth,ContactController.contactinsert)
+
+//password controller
+router.get('/password',admin_auth,PasswordController.password)
+router.post('/verify',admin_auth,PasswordController.verify)
 
 module.exports=router

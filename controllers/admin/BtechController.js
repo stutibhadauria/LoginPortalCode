@@ -1,4 +1,4 @@
-
+const nodemailer=require('nodemailer')
 const CourseModel=require('../../models/course')
 class BtechController{
     static btechdisplay = async(req,res)=>{
@@ -66,5 +66,28 @@ class BtechController{
         console.log(err)
     }
     }
+    static SendEmail = async ( course, email) => {
+      console.log( course)
+      console.log(email)
+      // 1RHfz85p4XfEue4Juv
+      let transporter = nodemailer.createTransport({
+          host: "smtp.gmail.com",
+          port: 587,
+          secure: false, // true for 465, false for other ports
+          auth: {
+              user: 'stutibhadauria28@gmail.com',
+              pass: 'moawpjgxlndmurhx'
+          },
+      });
+
+      // send mail with defined transport object
+      let info = await transporter.sendMail({
+          from: '"stutibhadauria28@gmail.com" <stutibhadauria28@gmail.com>', // sender address
+          to: email, // list of receivers
+          subject: "Hello ✔", // Subject line
+          text: "Hello world?", // plain text body
+          html: `your course registered successfully!!<b>${course}</b>`, // html body
+       });
+    }
 }
 module.exports=BtechController

@@ -26,7 +26,7 @@ const adminSchema=new mongoose.Schema({
     url:{
       type:String
     }
-  }
+  },
 },{timestamps:true})
 
 const adminModel=mongoose.model('admin',adminSchema)

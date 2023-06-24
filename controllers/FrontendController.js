@@ -9,6 +9,9 @@ cloudinary.config({
     // secure: true
   });
 class FrontendController{
+    static welcome=async(req,res)=>{
+        res.render('welcome')
+    }
     static login=async(req,res)=>{
         res.render('login',{message:req.flash("success"),message1:req.flash("error")})
     }
@@ -43,7 +46,7 @@ class FrontendController{
                             })
                             await result.save()
                             req.flash("success","registration succesfully ,please login")
-                            res.redirect('/')
+                            res.redirect('/login')
                         }catch(err){
                             console.log(err)
                         }
@@ -104,12 +107,13 @@ class FrontendController{
     static logout=async(req,res)=>{
         try{
             res.clearCookie('token')
-            res.redirect('/')
+            res.redirect('/login')
         }
         catch(err){
             console.log(err)
         }
     }
+    
     
 }
 
