@@ -41,6 +41,14 @@ const CourseSchema= new mongoose.Schema({
   user_id:{
     type:String,
     required:true
+  },
+  Comment:{
+    type:String,
+    default:"pending"
+  },
+  status:{
+    type:String,
+    default:"pending"
   }
 },
 {timestamps:true}

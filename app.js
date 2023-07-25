@@ -7,6 +7,7 @@ const fileUpload=require('express-fileupload')
 const cookieParser = require('cookie-parser')
 app.use(cookieParser())
 var session =require('express-session')
+
 var flash=require('connect-flash')
 app.use(fileUpload({useTempFiles:true}))
 const router=require('./routes/web')

@@ -53,5 +53,16 @@ class CollageController {
             html: `${ name } your ${ course } course  successfully, <br><b></b>`, // html body
         });
     }
+    static updateapproval=async(req,res)=>{
+        try{
+            const data=await CourseModel.findByIdAndUpdate(req.params.id,{
+             Comment:req.body.Comment,
+             status:req.body.status
+            });
+            res.redirect('/collage/dashboard')
+        }catch(err){
+            console.log(err);
+        }
+    }
 }
 module.exports=CollageController

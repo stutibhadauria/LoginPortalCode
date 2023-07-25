@@ -57,6 +57,7 @@ router.post('/btechupdate/:id',admin_auth,BtechController.btechupdate)
 router.get('/collage/dashboard',admin_auth,CollageController.dashboarddata)
 router.get('/collage/display',admin_auth,CollageController.displaydata)
 router.get('/collage/contact',admin_auth,CollageController.contact)
+router.post('/updateapproval/:id',admin_auth,CollageController.updateapproval)
 
 //contactcontroller
 router.get('/collage/contact',admin_auth,ContactController.contactview)

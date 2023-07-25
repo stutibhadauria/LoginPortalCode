@@ -1,86 +1,107 @@
 <%- include('../header.ejs') %>
 
-<br><br>
-<section class="dashboard-wrap mtb-40">
-    <div class="container">
-        <div class="body-content">
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="dash-left">
-                        <ul>
-                            <li class="active"><a href="/collage/dashboard" class="active"style="font-weight:bold;">Dashboard</a></li>
-                            <li><a href="/collage/display"style="font-weight:bold;">Display</a></li>
-                            <li><a href="/collage/contact"style="font-weight:bold;">Contact</a></li>          
-                            <li><a href="/logout"style="font-weight:bold;">Logout</a></li>
-                        </ul>
-                    </div>   
-                </div>
-                <div class="col-md-9">
-                    <div class="dash-right">
-                        <div class="container-fluid view">
-                            <div class="container">
-                                <div class="row">
-                                <div class="col-md-1"></div>
-                                <div class="col-md-10">
-                                <h1>Student Information</h1>
-                            <table class="table table-bordered table-striped "style="margin-top:20px">
-                                <tr class="bg-secondary">
-                                    <th>Serial.no</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Phone Number</th>
-                                    <th>gender</th>
-                                    <th>DOB</th>
-                                    <th>Address</th>
-                                    <th>College</th>
-                                    <th>Course</th>
-                                    <th>Branch</th> 
-                                </tr>
-                                <% i=1 %>
-                        
-                                    <% f.forEach((b)=>{ %>
-                                        <tr class="bg-warning">
-                                            <td>
-                                                <%= i++ %>
-                                            </td>
-                                            <td>
-                                                <%= b.name %>
-                                            </td>
-                                            <td>
-                                                <%= b.email %>
-                                            </td>
-                                            <td>
-                                                <%= b.phone %>
-                                            </td>
-                                            <td>
-                                                <%= b.gender %>
-                                            </td>
-                                            <td>
-                                                <%= b.date%>
-                                            </td>
-                                            <td>
-                                                <%= b.address%>
-                                            </td>
-                                            <td>
-                                                <%= b.college%>
-                                            </td>
-                                            <td>
-                                                <%= b.course%>
-                                            </td>
-                                            <td>
-                                                <%= b.branch%>
-                                            </td>
-                                            <% }) %>
-                            </table>
-                            </div>
-                            </div>
+    <br><br>
+    <section class="dashboard-wrap mtb-40">
+        <div class="container">
+            <div class="body-content">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="dash-left">
+                            <ul>
+                                <li class="active"><a href="/collage/dashboard" class="active"
+                                        style="font-weight:bold;">Dashboard</a></li>
+                                <li><a href="/collage/display" style="font-weight:bold;">Display</a></li>
+                                <li><a href="/collage/contact" style="font-weight:bold;">Contact</a></li>
+                                <li><a href="/logout" style="font-weight:bold;">Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="dash-right">
+                            <div class="container-fluid view">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-1"></div>
+                                        <div class="col-md-10">
+                                            <h1>Student Information</h1>
+                                            <table class="table table-bordered table-striped " style="margin-top:20px">
+                                                <tr class="bg-secondary">
+                                                    <th>Serial.no</th>
+                                                    <th>Name</th>
+                                                    <th>Email</th>
+                                                    <th>Phone Number</th>
+                                                    <th>gender</th>
+                                                    <th>DOB</th>
+                                                    <th>Address</th>
+                                                    <th>College</th>
+                                                    <th>Course</th>
+                                                    <th>Branch</th>
+                                                    <th>Comment</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                                <% i=1 %>
+
+                                                    <% f.forEach((b)=>{ %>
+                                                        <tr class="bg-warning">
+                                                            <td>
+                                                                <%= i++ %>
+                                                            </td>
+                                                            <td>
+                                                                <%= b.name %>
+                                                            </td>
+                                                            <td>
+                                                                <%= b.email %>
+                                                            </td>
+                                                            <td>
+                                                                <%= b.phone %>
+                                                            </td>
+                                                            <td>
+                                                                <%= b.gender %>
+                                                            </td>
+                                                            <td>
+                                                                <%= b.date%>
+                                                            </td>
+                                                            <td>
+                                                                <%= b.address%>
+                                                            </td>
+                                                            <td>
+                                                                <%= b.college%>
+                                                            </td>
+                                                            <td>
+                                                                <%= b.course%>
+                                                            </td>
+                                                            <td>
+                                                                <%= b.branch%>
+                                                            </td>
+                                                            <td>
+                                                                <form method="post" action="/updateapproval/<%=b._id%>">
+                                                                    <textarea name="Comment"></textarea>
+
+                                                            </td>
+
+                                                            <td>
+
+                                                                <button class="btn btn-secondary bg-success text-black"
+                                                                    value="approved" name="status">Approved</button>
+                                                                <a href=""
+                                                                    class="btn btn-secondary bg-danger text-black"
+                                                                    value="rejected" name="status">Rejected</a>
+                                                                </form>
+
+                                                                           
+                                                            </td>
+                                                            <% }) %>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div> 
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section><br><br>
+    </section><br><br>
+<%- include('../footer.ejs') %>
 
-<%-include('../footer.ejs')%>
+    
