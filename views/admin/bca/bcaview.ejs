@@ -16,6 +16,8 @@
             <th>College</th>
             <th>Course</th>
             <th>Branch</th> 
+            <th>Comment</th> 
+            <th>Status</th> 
             <th>Edit</th>
         </tr>
         <% i=1 %>
@@ -51,6 +53,12 @@
                     </td>
                     <td>
                         <%= b.branch%>
+                    </td>
+                    <td>
+                        <%= b.Comment%>
+                    </td>
+                    <td>
+                        <%= b.status%>
                     </td>
                     <td>
                         <a href="/admin/bcaedit/<%=b._id%>" class="btn btn-danger"><i class="fa-regular fa-pen-to-square"></i></a>
